@@ -1,0 +1,74 @@
+Trajectory ID: bac9bc83-0b70-49ca-9b75-399c25a685b0
+Error: agent executor error: model output error: generation exceeded max tokens limit. Please generate a message within the token limit (65536)
+(1) attached stack trace
+  -- stack trace:
+  | google3/third_party/gemini_coder/framework/executor/agentexecutor/agentexecutor.(*AgentExecutor).Run
+  | 	third_party/gemini_coder/framework/executor/agentexecutor/agentexecutor.go:312
+  | [...repeated from below...]
+Wraps: (2) agent executor error
+Wraps: (3) sentry event id: <nil>
+Wraps: (4) model output error
+Wraps: (5) attached stack trace
+  -- stack trace:
+  | google3/third_party/gemini_coder/framework/generator/generator.(*streamResponseHandler).processStream
+  | 	third_party/gemini_coder/framework/generator/stream_handler.go:237
+  | google3/third_party/gemini_coder/framework/generator/generator.(*PlannerGenerator).attemptGenerate
+  | 	third_party/gemini_coder/framework/generator/planner_generator.go:451
+  | google3/third_party/gemini_coder/framework/generator/generator.(*PlannerGenerator).generateWithAPIRetry
+  | 	third_party/gemini_coder/framework/generator/planner_generator.go:286
+  | google3/third_party/gemini_coder/framework/generator/generator.(*PlannerGenerator).generateWithModelOutputRetry
+  | 	third_party/gemini_coder/framework/generator/planner_generator.go:148
+  | google3/third_party/gemini_coder/framework/generator/generator.(*PlannerGenerator).Generate
+  | 	third_party/gemini_coder/framework/generator/planner_generator.go:91
+  | google3/third_party/gemini_coder/framework/executor/executor.(*Executor).executeLoop
+  | 	third_party/gemini_coder/framework/executor/executor.go:358
+  | google3/third_party/gemini_coder/framework/executor/executor.(*Executor).Execute
+  | 	third_party/gemini_coder/framework/executor/executor.go:278
+  | google3/third_party/gemini_coder/framework/executor/agentexecutor/agentexecutor.(*AgentExecutor).Run
+  | 	third_party/gemini_coder/framework/executor/agentexecutor/agentexecutor.go:278
+  | google3/third_party/jetski/cortex/cortex.(*CascadeManager).executeHelper
+  | 	third_party/jetski/cortex/cascade_manager.go:2024
+  | google3/third_party/jetski/cortex/cortex.(*CascadeManager).ExecuteOne
+  | 	third_party/jetski/cortex/cascade_manager.go:2085
+  | google3/third_party/jetski/cortex/cortex.(*CascadeManager).SendAllQueuedMessages
+  | 	third_party/jetski/cortex/cascade_manager.go:2107
+  | google3/third_party/jetski/language_server/language_server.(*Server).SendAllQueuedMessages
+  | 	third_party/jetski/language_server/rpcs_cascade.go:604
+  | google3/third_party/golang/connectrpc_com/connect/v/v1/connect.NewUnaryHandler[...].func1
+  | 	third_party/golang/connectrpc_com/connect/v/v1/handler.go:51
+  | google3/third_party/jetski/connect_utils/connect_utils.(*validateInterceptor).WrapUnary.func1
+  | 	third_party/jetski/connect_utils/validate.go:20
+  | google3/third_party/jetski/language_server/interceptor/interceptor.(*CsrfInterceptor).WrapUnary.func1
+  | 	third_party/jetski/language_server/interceptor/csrf_interceptor.go:41
+  | google3/third_party/jetski/language_server/interceptor/interceptor.(*requestIDInterceptor).WrapUnary.func1
+  | 	third_party/jetski/language_server/interceptor/request_id_interceptor.go:31
+  | google3/third_party/jetski/connect_utils/connect_utils.(*LogErrorsServerInterceptor).WrapUnary.func1
+  | 	third_party/jetski/connect_utils/interceptor.go:80
+  | google3/third_party/jetski/connect_utils/connect_utils.(*SentryErrorInterceptor).WrapUnary.func1
+  | 	third_party/jetski/connect_utils/interceptor.go:399
+  | google3/third_party/jetski/language_server/interceptor/interceptor.(*traceTaskInterceptor).WrapUnary.func1
+  | 	third_party/jetski/language_server/interceptor/trace_task_interceptor.go:35
+  | google3/third_party/golang/connectrpc_com/connect/v/v1/connect.NewUnaryHandler[...].func2
+  | 	third_party/golang/connectrpc_com/connect/v/v1/handler.go:69
+  | google3/third_party/golang/connectrpc_com/connect/v/v1/connect.(*Handler).ServeHTTP
+  | 	third_party/golang/connectrpc_com/connect/v/v1/handler.go:237
+  | google3/third_party/jetski/language_server_pb/language_server_go_proto_connect.NewLanguageServerServiceHandler.func1
+  | 	blaze-out/windows_x64-opt/bin/third_party/jetski/language_server_pb/language_server_go_proto_connect/language_server.connect.go:4967
+  | net/http.HandlerFunc.ServeHTTP
+  | 	third_party/go/gc/src/net/http/server.go:2285
+  | net/http.(*ServeMux).ServeHTTP
+  | 	third_party/go/gc/src/net/http/server.go:2829
+  | google3/third_party/jetski/language_server/language_server.setUpHTTPServers.(*Cors).Handler.func3
+  | 	third_party/golang/cors/cors.go:289
+  | net/http.HandlerFunc.ServeHTTP
+  | 	third_party/go/gc/src/net/http/server.go:2285
+  | net/http.serverHandler.ServeHTTP
+  | 	third_party/go/gc/src/net/http/server.go:3324
+  | net/http.initALPNRequest.ServeHTTP
+  | 	third_party/go/gc/src/net/http/server.go:4087
+  | net/http.(*http2serverConn).runHandler
+  | 	third_party/go/gc/src/net/http/h2_bundle.go:6604
+  | runtime.goexit
+  | 	third_party/go/gc/src/runtime/asm_amd64.s:1774
+Wraps: (6) generation exceeded max tokens limit. Please generate a message within the token limit (65536)
+Error types: (1) *withstack.withStack (2) *errutil.withPrefix (3) *go_utils.withSentryEventId (4) *utils.ModelOutputError (5) *withstack.withStack (6) *errutil.leafError
